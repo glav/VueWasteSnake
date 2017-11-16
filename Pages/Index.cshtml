@@ -3,32 +3,3 @@
 @{
     ViewData["Title"] = "Home page";
 }
-
-<div id="app">
-    <h3>{{ message }}</h3>
-    <span v-bind:title="message">hover over me</span>
-</div>
-
-<div id="test1">
-    <ul>
-        <li v-for="item in items">{{ item }}</li>
-    </ul>
-    <button v-on:click="testmeth">{{ label }}</button>
-    <input v-model="label" />
-</div>
-
-<div id="test2">
-    <button v-on:click="toggle">Toggle</button>
-    <transition name="fade">
-        <p v-if="showText">This is some uninteresting text</p>
-    </transition>
-</div>
-
-<div id="test3">
-    <ol>
-        <todo-item v-for="item in somelist"
-                   v-bind:todo="item"
-                   v-bind:key="item.id">
-        </todo-item>
-    </ol>
-</div>
