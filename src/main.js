@@ -1,4 +1,5 @@
 ﻿'use strict';
+
 import Vue from 'vue';
 
 var app = new Vue({
@@ -34,5 +35,27 @@ var test2 = new Vue({
     },
     data: {
         showText: true
+    }
+
+});
+
+
+Vue.component('todo-item', {
+    // The todo-item component now accepts a
+    // "prop", which is like a custom attribute.
+    // This prop is called todo.
+    props: ['todo'],
+    template: '<li>{{ todo.text }}</li>'
+});
+
+var test3 = new Vue({
+    el: '#test3',
+    data: {
+        somelist: [
+            { id: 0, text: 'zero' },
+            { id: 1, text: 'one' },
+            { id: 2, text: 'two' }
+
+        ]
     }
 });
