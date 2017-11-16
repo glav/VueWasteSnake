@@ -6,13 +6,6 @@
     <title>@ViewData["Title"] - VueWasteSnake</title>
 
     <style>
-        .fade-enter-active, .fade-leave-active {
-            transition: opacity .5s
-        }
-
-        .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-            opacity: 0
-        }
     </style>
 
     <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -22,18 +15,9 @@
     <script src="~/dist/vendor.js" asp-append-version="true"></script>
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <a asp-page="/Index" class="navbar-brand">VueWasteSnake</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-page="/Index">Home</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <div id="app"></div>
+    
+    <!-- <div id="navheader"></div> -->
     <div class="container body-content">
         @RenderBody()
         <hr />
@@ -42,10 +26,6 @@
         </footer>
     </div>
 
-    @*<environment exclude="Development">
-            <script src="~/dist/vendor.js" asp-append-version="true"></script>
-            <script src="~/dist/app.js" asp-append-version="true"></script>
-        </environment>*@
     <script src="~/dist/app.js" asp-append-version="true"></script>
 
     @RenderSection("Scripts", required: false)
