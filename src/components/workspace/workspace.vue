@@ -5,13 +5,15 @@
                 actions
             </div>
             <div class="col-sm-4 workspace-section-box">
-                <snake-entry v-bind:index="currentIndex" />
+                <!-- This v-on event capture here MUST be on this element as it is the one emitting it
+                Having it anywhere else does not work -->
+                <snake-entry v-bind:index="currentIndex" v-on:addevent="addEntry" />
             </div>
             <div class="col-sm-4 workspace-section-box">
                 <entry-count v-bind:currentCount="currentIndex" />
             </div>
         </div>
-    <display-surface />
+        <display-surface />
     </div>
 </template>
 
@@ -33,7 +35,7 @@ export default {
   },
   methods: {
     addEntry: function() {
-        indexCount++;
+        this.currentIndex++;
         console.log('add entry');
     },
     removeEntry: function(index) {

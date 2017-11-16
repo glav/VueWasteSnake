@@ -1,7 +1,7 @@
 <<template>
   <div>
     <navheader></navheader>
-    <workspace v:bind:store="store"/>
+    <workspace />
     <fade-toggle/>
   </div>
 </template>
@@ -12,7 +12,12 @@ import fadeToggle from "../fadeToggle/fadeToggle.vue";
 import workspace from "../workspace/workspace.vue";
 
 export default {
-  components: { navheader,fadeToggle, workspace }
+  components: { navheader,fadeToggle, workspace },
+  methods: {
+    test: function() {
+      console.log('got addentry event in app.vue');
+    }
+  }
 };
 
 </script>
