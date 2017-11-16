@@ -3,3 +3,19 @@
 @{
     ViewData["Title"] = "Home page";
 }
+
+<script>
+    class store {
+
+    constructor() {
+        console.log('store ctor');
+        this.entryList = [];
+    }
+
+    addEntry(snakeEntry) {
+        console.log('adding to store');
+    }
+}
+
+var datastore = new store();
+</script>

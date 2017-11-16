@@ -1,7 +1,7 @@
 <<template>
-  <div id="app">
+  <div>
     <navheader></navheader>
-    <p>Header should show</p>
+    <workspace v:bind:store="store"/>
     <fade-toggle/>
   </div>
 </template>
@@ -9,10 +9,12 @@
 <script>
 import navheader from "../header/navheader.vue";
 import fadeToggle from "../fadeToggle/fadeToggle.vue";
+import workspace from "../workspace/workspace.vue";
 
 export default {
-  components: { navheader,fadeToggle }
+  components: { navheader,fadeToggle, workspace }
 };
+
 </script>
 
 <style>
