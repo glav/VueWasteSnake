@@ -1,10 +1,10 @@
 <<template>
     <div>
-        <p>Display surface</p>
+        <h4 class='title'>Todays waste ssssssssnake</h4>
         <div>
-            <transition-group name="fade" >
+            <transition-group name="fade" tag="div" >
                 <div v-for="card in snakecards" v-bind:key="card.index" class="display-card">
-                    <h4>{{ getWasteTitle() }}</h4>
+                    <h4>{{ card.title }}</h4>
                     <p>{{ card.activityDescription }}</p>
                     <p>Time wasted: {{ card.timeWasted }}</p>
                 </div>
@@ -15,8 +15,6 @@
 
 <script>
 
-let cardTitles = ['Time waster','Annoyance','Not work'];
-
 export default {
     props: ['snakecards'],
     template: '<display-surface/>',
@@ -24,16 +22,6 @@ export default {
         return {};
     },
     methods: {
-        getWasteTitle: function() {
-            function getRandomInt(min, max) {
-                    min = Math.ceil(min);
-                    max = Math.floor(max);
-                    return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
-                }
-            var max = cardTitles.length-1;
-            var randomIndex = getRandomInt(0,max);
-            return cardTitles[randomIndex];
-        }
     }
 }
 </script>
@@ -56,5 +44,12 @@ export default {
     position: relative;
     margin: 1rem;
     text-align: center;
+    float:left;
+}
+
+.title {
+    text-align: center;
+    padding:10px;
+    font-weight: bold;
 }
 </style>

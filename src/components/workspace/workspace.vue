@@ -35,10 +35,8 @@ export default {
   },
   methods: {
     addEntry: function(snakeEntry) {
-        this.entries.push({index: this.currentIndex, activityDescription: snakeEntry.activityDescription, timeWasted: snakeEntry.timeWasted });
+        this.entries.push({index: this.currentIndex, title: snakeEntry.title, activityDescription: snakeEntry.activityDescription, timeWasted: snakeEntry.timeWasted });
         this.currentIndex++;
-        console.log(snakeEntry);
-        
     },
     removeEntry: function(index) {
         console.log('remove entry #' + index);
