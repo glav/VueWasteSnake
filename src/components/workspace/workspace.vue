@@ -1,7 +1,7 @@
 <<template>
     <div>
-        <div class="workspace container-fluid workspace-section">
-            <div class="col-sm-2">
+        <div class="workspace container-fluid">
+            <div class="col-sm-2 workspace-section">
                 actions
             </div>
             <div class="col-sm-4 workspace-section workspace-section-box">
@@ -56,6 +56,7 @@ export default {
 }
 .workspace .workspace-section {
   height: 100%;
+  padding:8px;
 }
 .workspace-section-box {
   border-left: 1px dotted gray;
