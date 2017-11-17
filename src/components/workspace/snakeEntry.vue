@@ -35,14 +35,6 @@ export default {
             this.item.timeWasted = '';
         }
     },
-    computed: {
-        getActivityControlId: function() {
-            return 'act-entry-' + this.index;
-        },
-        getTimeControlId: function() {
-            return 'tim-entry-' + this.index;
-        }
-    },
     data () {
         return {
             item: {

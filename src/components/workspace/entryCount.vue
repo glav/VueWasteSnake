@@ -1,12 +1,10 @@
 <<template>
-  <div>
+  <div class="entry-container">
     <div>
-      <span>Number of Entries:&nbsp;</span>
-      <span>{{ currentCount }}</span>
+      <h4>Number of Entries:&nbsp;{{ currentCount }}</h4>
     </div>
     <div>
-      <span>Total wasted time in hours:&nbsp;</span>
-      <span>{{ totalTimeWasted }}</span>
+      <h4 v-bind:class="{important:shouldHighlightHours}">Total wasted time in hours:&nbsp;{{ totalTimeWasted }}</h4>
     </div>
   </div>
 </template>
@@ -16,6 +14,9 @@ export default {
   props: ["snakecards"],
   template: '<entry-count />',
   computed: {
+    shouldHighlightHours: function() {
+      return this.totalTimeWasted > 0;
+    },
     currentCount: function() {
       return this.snakecards ? this.snakecards.length : 0;
     },
@@ -32,5 +33,10 @@ export default {
 </script>
 
 <style>
-
+.entry-container {
+  padding: 8px;
+}
+.important {
+  color: #c52626;
+}
 </style>

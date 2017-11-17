@@ -2,7 +2,8 @@
     <div>
         <div class="workspace container-fluid">
             <div class="col-sm-2 workspace-section">
-                actions
+                <button v-on:click="clearAll">Clear all</button>
+                <button v-on:click="generateLink">Generate a link to this waste board</button>
             </div>
             <div class="col-sm-4 workspace-section workspace-section-box">
                 <!-- This v-on event capture here MUST be on this element as it is the one emitting it
@@ -36,12 +37,17 @@ export default {
     addEntry: function(snakeEntry) {
         this.entries.push({index: this.currentIndex, activityDescription: snakeEntry.activityDescription, timeWasted: snakeEntry.timeWasted });
         this.currentIndex++;
-        console.log('add entry');
         console.log(snakeEntry);
         
     },
     removeEntry: function(index) {
         console.log('remove entry #' + index);
+    },
+    clearAll: function() {
+        this.entries = [];
+    },
+    generateLink: function() {
+        alert('sorry, not done yet');
     }
   }
 };
@@ -60,6 +66,9 @@ export default {
 }
 .workspace-section-box {
   border-left: 1px dotted gray;
+}
+button {
+    margin: 2px;
 }
 
 
