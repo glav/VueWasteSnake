@@ -1,11 +1,13 @@
 <template>
-    <div class="snake-entry" v-on:addevent="test">
-        <p>Enter the event or item that wasted your time recently or forced a context switch</p>
-        <label v-bind:for="getActivityControlId">Activity</label>
-        <input v-bind:id="getActivityControlId" v-model="item.activityDescription" placeholder="Enter Activity" />
-        <label v-bind:for="getTimeControlId">Time wasted</label>
-        <input v-bind:id="getTimeControlId" v-model="item.timeWasted" placeholder="Enter hours" />
-        <input type="button" value="Add" v-on:click="addEntry" />
+    <div class="snake-entry">
+        <form name="snake-entry-form">
+            <p>Enter the event or item that wasted your time recently or forced a context switch</p>
+            <label for="activity">Activity</label>
+            <input id="activity" ref="activity" v-model.trim="item.activityDescription" placeholder="Enter Activity" autofocus />
+            <label for="timewasted">Time wasted</label>
+            <input id="timewasted" v-model.number="item.timeWasted" placeholder="Enter hours" type="number" />
+            <input type="submit" value="Add" v-on:click.prevent="addEntry" />
+        </form>
     </div>
 </template>
 
@@ -15,11 +17,22 @@ export default {
     template:'<snake-entry/>',
     methods: {
         addEntry: function() {
-            console.log('emitting addentry event');
-            this.$emit('addevent');
+            if (this.item.activityDescription === '') {
+                alert('You must enter an activity');
+                return;
+            }
+
+            if (Number(this.item.timeWasted) <= 0) {
+                alert('You must enter some time that was wasted');
+                return;
+            }
+            this.$emit('addevent',this.item);
+            this.clearEntryFields();
+            this.$refs.activity.focus();
         },
-        test: function() {
-            console.log('test');
+        clearEntryFields: function() {
+            this.item.activityDescription = '';
+            this.item.timeWasted = '';
         }
     },
     computed: {
@@ -34,7 +47,7 @@ export default {
         return {
             item: {
                 activityDescription: '',
-                timeWasted: 0
+                timeWasted: ''
             }
             
         }

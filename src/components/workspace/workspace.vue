@@ -1,25 +1,24 @@
 <<template>
     <div>
-        <div class="workspace container-fluid">
+        <div class="workspace container-fluid workspace-section">
             <div class="col-sm-2">
                 actions
             </div>
-            <div class="col-sm-4 workspace-section-box">
+            <div class="col-sm-4 workspace-section workspace-section-box">
                 <!-- This v-on event capture here MUST be on this element as it is the one emitting it
                 Having it anywhere else does not work -->
                 <snake-entry v-bind:index="currentIndex" v-on:addevent="addEntry" />
             </div>
-            <div class="col-sm-4 workspace-section-box">
-                <entry-count v-bind:currentCount="currentIndex" />
+            <div class="col-sm-4 workspace-section-box workspace-section">
+                <entry-count v-bind:snakecards="entries" />
             </div>
         </div>
-        <display-surface />
+        <display-surface v-bind:snakecards="entries" />
     </div>
 </template>
 
 <script>
- let indexCount = 0;
-
+ 
 import snakeEntry from "./snakeEntry.vue";
 import entryCount from "./entryCount.vue";
 import displaySurface from "../visualisation/displaySurface.vue";
@@ -30,13 +29,16 @@ export default {
   data: function() {
     return {
       entries: [],
-      currentIndex: indexCount
+      currentIndex: 0
     };
   },
   methods: {
-    addEntry: function() {
+    addEntry: function(snakeEntry) {
+        this.entries.push({index: this.currentIndex, activityDescription: snakeEntry.activityDescription, timeWasted: snakeEntry.timeWasted });
         this.currentIndex++;
         console.log('add entry');
+        console.log(snakeEntry);
+        
     },
     removeEntry: function(index) {
         console.log('remove entry #' + index);
@@ -52,7 +54,7 @@ export default {
   background: url("/images/wastesnakeHeadLogo.png") no-repeat right/10%;
   box-shadow: #bbbbbb 0 3px 5px 1px;
 }
-.workspace div {
+.workspace .workspace-section {
   height: 100%;
 }
 .workspace-section-box {
